@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://db:888888@mflix-database:5432/mflix?schema=public"
 }
 
 model Director {

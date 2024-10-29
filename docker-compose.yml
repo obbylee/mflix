@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: mflix-backend
     image: mflix
     build:
       context: .
@@ -10,11 +11,14 @@ services:
         condition: service_healthy
 
   database:
+    container_name: mflix-database
     image: postgres:alpine
     ports:
       - "5432:5432"
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: 888888
+      POSTGRES_DB: mflix
     volumes:
       - mflix:/var/lib/postgresql/data
     healthcheck:
